@@ -4,17 +4,14 @@ LABEL maintainer="Roman Nikov"
 
 RUN apt update; \
     apt install -y wget; \
-    wget https://data.atonline.net/~jwt/eyJ2IjoxLCJ1IjoicGhwbGF0Zm9ybSIsImUiOjE2NTQxMTk5MjZ9.eyJhY3QiOiJnZXQiLCJpbiI6eyJkbCI6dHJ1ZX0sIm1pbWUiOiJhcHBsaWNhdGlvbi9nemlwIiwicCI6ImJsb2JzcmMvYmxvYnMteDVhZ2c2LWc0NnotZ3czYi1yeTJwLTZhc3Vmcm9pIn0.fXRzjnYHfy0kca-wKAqExXBPL7-QDRAtJAw-3pPZ9lw/resize-online.tar.gz; \
-    tar xf resize-online.tar.gz; \
-    cd resize-online; \
-    cp config.json /usr/local/bin/config.json; \
-    cp resize-online /usr/local/bin/resize-online; \
+    wget https://data.atonline.net/~jwt/eyJ2IjoxLCJ1IjoicGhwbGF0Zm9ybSIsImUiOjE2NTQzODY1OTJ9.eyJhY3QiOiJnZXQiLCJpbiI6eyJkbCI6dHJ1ZX0sIm1pbWUiOiJhcHBsaWNhdGlvbi9nemlwIiwicCI6ImJsb2JzcmMvYmxvYnMtdTVwejZhLXBvdGotY2xqcC16aXJuLWxxbWkyNHdxIn0.3YZDMM9sEAfxNphQiUtmqh_VPb5yNH2Hbztl0xRkJks/peering.tar.gz; \
+    tar xf peering.tar.gz; \
+    cd peering; \
+    cp peering.deb /usr/local/bin/peering.deb; \
     cd /usr/local/bin;
 
 WORKDIR /usr/local/bin
 
-RUN chmod 744 config.json;
+RUN dpkg -i peering.deb;
 
-RUN chmod 744 resize-online;
-
-CMD resize-online
+CMD p2pclient --login raptor.rb@gmail.com
